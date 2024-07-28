@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>Revit DI Sample</Name>
+		<Assembly>Revit.DependencyInjection.dll</Assembly>
+		<FullClassName>Revit.DependencyInjection.RevitDIApplication</FullClassName>
+		<AddInId>80618690-1A29-48FF-B128-2B5162C9B50C</AddInId>
+		<VendorId>Nicholas Graham</VendorId>
+	</AddIn>
+</RevitAddIns>
