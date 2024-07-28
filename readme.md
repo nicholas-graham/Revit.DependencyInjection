@@ -50,7 +50,7 @@ public class GreetMessageCommand : RevitDICommand<GreetMessageCommand>, IRevitDI
 ```csharp
 public static bool ExecuteWithinScope => true;
 ```
-`RevitDICommand<T>` provides our base implementation of [IExternalCommand.Execute()](https://www.revitapidocs.com/2017/ad99887e-db50-bf8f-e4e6-2fb86082b5fb.htm). This is where the command is resolved with it's dependencies within a scope or from the root container, and `Execute()` is called.
+`RevitDICommand<T>` provides our base implementation of [IExternalCommand.Execute()](https://www.revitapidocs.com/2017/ad99887e-db50-bf8f-e4e6-2fb86082b5fb.htm). This is where the command is resolved with it's dependencies. We either do this within a scope or from the root container. This is also where `Execute()` is called and the result returned.
 ```csharp
 [Transaction(TransactionMode.Manual)]
 [Regeneration(RegenerationOption.Manual)]
@@ -79,7 +79,7 @@ public class RevitDICommand<T> : IExternalCommand where T : class, IRevitDIComma
     }
 }
 ```
-If we need more command dependencies, we can register them inside `RegisterCommandDependencies`. This is where we can build our command specific dependency tree.
+If we need more command dependencies, we can register them inside `RegisterCommandDependencies`. This is where we build our command specific dependency tree.
 ```csharp
 public static IServiceCollection RegisterCommandDependencies(IServiceCollection services)
 {
@@ -137,7 +137,7 @@ public static IServiceProvider GetServiceProvider()
 ```
 `RevitDIServiceCollection` provides a base set of dependencies (in this sample, only the dependencies required to access the [UIApplication](https://www.revitapidocs.com/2017/51ca80e2-3e5f-7dd2-9d95-f210950c72ae.htm) at runtime, `RevitUIAppResolver`). In larger apps this could be a suite of dependencies for a set of tools.
 
-Push buttons may be added similar to regular commands:
+Push buttons may be added in a similar fashion to non DI commands:
 ```csharp
 var buttonData = new PushButtonData(
     "GreetRevitDI",
