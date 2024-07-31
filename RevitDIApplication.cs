@@ -53,8 +53,8 @@ namespace Revit.DependencyInjection
             var buttonData = new PushButtonData(
                 "GreetRevitDI",
                 "Greet Revit!",
-                typeof(RevitDICommand<GreetMessageCommand>).Assembly.Location,
-                typeof(RevitDICommand<GreetMessageCommand>).FullName);
+                typeof(RevitDICommandBase<GreetMessageCommand>).Assembly.Location,
+                typeof(RevitDICommandBase<GreetMessageCommand>).FullName);
 
             panel.AddItem(buttonData);
         }

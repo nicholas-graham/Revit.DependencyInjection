@@ -9,11 +9,11 @@ namespace Revit.DependencyInjection
 {
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
-    public class RevitDICommand<T> : IExternalCommand where T : class, IRevitDICommand
+    public class RevitDICommandBase<T> : IExternalCommand where T : class, IRevitDICommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            // Create a new scope for the command, resolve it's dependencies and execute it.
+            // Get the service provider resolve the command dependencies, and execute it.
             var provider = RevitDIApplication.GetServiceProvider() ?? 
                 throw new InvalidOperationException("Service provider is not initialized.");
 

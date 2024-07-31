@@ -5,7 +5,7 @@ using Revit.DependencyInjection.Resolvers;
 
 namespace Revit.DependencyInjection.Commands.GreetRevit.DI
 {
-    public class GreetMessageCommand : RevitDICommand<GreetMessageCommand>, IRevitDICommand
+    public class GreetMessageCommand : RevitDICommandBase<GreetMessageCommand>, IRevitDICommand
     {
         private readonly IRevitDependencyResolver<UIApplication> _uiAppResolver;
         private readonly GreetMessageDependency _greetMessageDependency;
